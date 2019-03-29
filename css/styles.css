@@ -50,17 +50,22 @@ header {
 }
 
 .message__input {
-  margin-top: 20px;
-  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 }
 
 .message__input--name,
 .message__input--text {
   width: 70%;
-  margin: 20px;
+  position: relative;
+}
+
+.nameInput,
+.messageInput {
+  width: 100%;
+  height: 40px;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #02bfb7;
@@ -68,7 +73,7 @@ header {
   color: white;
 }
 
-.message__input--button {
+.inputButton {
  background-color: #02bfb7;
  border: none;
  border-radius: 3px;
@@ -79,6 +84,28 @@ header {
  outline-style: none;
 }
 
+.message__input div {
+  margin: 25px 0;
+}
+
+.message__input div label {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  color: white;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+textarea:focus ~ label,
+#name:focus ~ label,
+textarea:valid ~ label,
+#name:valid ~ label {
+  top: -13px;
+  color: #02bfb7;
+  font-size: 13px;
+  font-weight: 700;
+}
 /*
 ------ DISPLAY MESSAGE SECTION ------
 */
@@ -107,10 +134,5 @@ header {
 
   header {
     width: 700px;
-  }
-
-  .message__input--name,
-  .message__input--text {
-    width: 50%;
   }
 }

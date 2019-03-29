@@ -25,11 +25,17 @@
       Send Message
     </h2>
     <div class="message__input">
+      <div class="message__input--name">
+        <input id="name" class="nameInput" required>
         <label for="name">Name</label>
-        <input id="name" class="message__input--name">
+      </div>
+      <div class="message__input--text">
+        <textarea id="message" class="messageInput" required></textarea>
         <label for="message">Message</label>
-        <textarea id="message" class="message__input--text"></textarea>
-        <button id="send" class="message__input--button">Send</button>
+      </div>
+      <div class="message__input--button">
+        <button id="send" class="inputButton">Send</button>
+      </div>
     </div>
   </section>
   <!-- DISPLAY MESSAGES -->
