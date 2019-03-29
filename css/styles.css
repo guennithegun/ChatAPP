@@ -1,0 +1,116 @@
+/*
+------ GENERAL STYLES ------
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  background-color: lightgray;
+  height: 100%;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+/*
+------ HEADER ------
+*/
+
+header {
+  margin: 0 auto;
+  height: 100px;
+  background-color: #2d3e50;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Anton', sans-serif;
+  letter-spacing: 15px;
+}
+
+/*
+------ CREATE MESSAGE SECTION ------
+*/
+
+.message {
+  background-color: #2d3e50;
+  margin: 0 auto;
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+  padding: 10px;
+}
+
+.message h2 {
+  color: #02bfb7;
+}
+
+.message__input {
+  margin-top: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.message__input--name,
+.message__input--text {
+  width: 70%;
+  margin: 20px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #02bfb7;
+  outline-style: none;
+  color: white;
+}
+
+.message__input--button {
+ background-color: #02bfb7;
+ border: none;
+ border-radius: 3px;
+ color: white;
+ cursor: pointer;
+ font-size: 1.2em;
+ padding: 10px 30px;
+ outline-style: none;
+}
+
+/*
+------ DISPLAY MESSAGE SECTION ------
+*/
+
+.chat {
+  background-color: #2d3e50;
+  height: 100%;
+  margin: 0 auto;
+  color: white;
+  font-family: 'Source Code Pro', monospace;
+  padding: 10px;
+}
+
+.chat h2 {
+  color: #02bfb7;
+}
+
+/*
+------ MEDIA QUERIES ------
+*/
+@media all and (min-width: 700px) {
+  .message,
+  .chat {
+    width: 700px;
+  }
+
+  header {
+    width: 700px;
+  }
+
+  .message__input--name,
+  .message__input--text {
+    width: 50%;
+  }
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CHAT APP</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32"/>
+  <link href="https://fonts.googleapis.com/css?family=Anton|Source+Code+Pro:400,700" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <h1>CHAT APP</h1>
+  </header>
+
+  <!-- SEND MESSAGE SECTION -->
+  <section class="message">
+    <h2>
+      Send Message
+    </h2>
+    <div class="message__input">
+        <label for="name">Name</label>
+        <input id="name" class="message__input--name">
+        <label for="message">Message</label>
+        <textarea id="message" class="message__input--text"></textarea>
+        <button id="send" class="message__input--button">Send</button>
+    </div>
+  </section>
+  <!-- DISPLAY MESSAGES -->
+  <section class="chat" id="messages">
+    <h2>
+      Chat History
+    </h2>
+
+  </section>
+  <script>
+  let socket = io();
+  $(() => {
+    $("#send").click(() => {
+      sendMessage({name: $("#name").val(), message: $("#message").val()});
+    });
+
+    getMessages();
+  });
+
+  socket.on('message', addMessages);
+
+  function addMessages(message){
+    $("#messages").append(`<h4> ${message.name} </h4> <p> ${message.message} </p>`)
+  }
+
+  function getMessages(){
+    $.get('http://localhost:8080/messages', (data) => {
+      data.forEach(addMessages);
+    })
+  }
+
+  function sendMessage(message){
+    $.post('http://localhost:8080/messages', message)
+  }
+  </script>
+</body>
+</html>
